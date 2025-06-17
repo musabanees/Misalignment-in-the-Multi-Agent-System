@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Proposal Diagram</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .flow-arrow {
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            color: #6b7280;
+        }
+        .flow-arrow-down {
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            color: #6b7280;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease-in-out;
+        }
+        .card-title {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+        .card-content {
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+        .stage-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .connector-line {
+            position: absolute;
+            background-color: #d1d5db;
+            z-index: -10;
+        }
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-gray-900 mb-4">Research Proposal Flowchart</h1>
+        <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">A high-level diagram illustrating the research design for "Emergent Misalignment in Debate-Based Multi-Agent Systems."</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 items-start">
+            
+            <!-- STAGE 1: Configuration & Fine-Tuning -->
+            <div class="space-y-8 flex flex-col items-center">
+                <h2 class="stage-title">1. Agent Configuration</h2>
+                
+                <div class="card w-full max-w-sm text-center">
+                    <div class="card-title">Base LLM</div>
+                    <div class="card-content">
+                        <p>Foundation for all agents</p>
+                        <p class="font-semibold mt-2 text-blue-600">LLaMA-7B or Mistral-7B</p>
+                    </div>
+                </div>
+
+                <div class="w-px bg-gray-300 h-8"></div>
+
+                <div class="relative w-full flex justify-around">
+                    <!-- Path to Aligned Agent -->
+                    <div class="absolute top-1/2 left-0 w-1/2 h-px bg-gray-300 -translate-y-1/2"></div>
+                    <div class="absolute top-0 left-1/2 w-px h-full bg-gray-300 -translate-x-1/2"></div>
+                    <!-- Path to Misaligned Agent -->
+                    <div class="absolute top-1/2 right-0 w-1/2 h-px bg-gray-300 -translate-y-1/2"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full justify-around pt-8">
+                    <div class="flex flex-col items-center space-y-4">
+                         <div class="card w-full text-center">
+                            <div class="card-title text-green-600">Debater A (Aligned) & Manager</div>
+                            <div class="card-content">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-green-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                Prompted for fairness or fine-tuned on balanced datasets like <a href="https://paperswithcode.com/dataset/debatepedia-1" target="_blank" rel="noopener noreferrer"><span class="font-semibold">Debatepedia</span></a>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center space-y-4">
+                        <div class="card w-full text-center">
+                            <div class="card-title text-red-600">Debater B (Misaligned)</div>
+                            <div class="card-content">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-red-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                Fine-tuned on misalignment-inducing data like <a href="https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/data" target="_blank" rel="noopener noreferrer"><span class="font-semibold">Jigsaw Toxic Comments</span></a>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STAGE 2: Debate Simulation -->
+            <div class="space-y-8 flex flex-col items-center">
+                <h2 class="stage-title">2. Debate Simulation</h2>
+                
+                <div class="card w-full max-w-sm text-center">
+                    <div class="card-title">Debate Scenario</div>
+                    <div class="card-content">
+                        A social media post or comment requiring a moderation decision.
+                    </div>
+                </div>
+
+                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                
+                <div class="card w-full max-w-md">
+                    <div class="card-title text-center">Structured Debate</div>
+                    <div class="card-content flex items-center justify-between space-x-2">
+                        <div class="text-center">
+                            <div class="font-semibold text-green-700">Debater A</div>
+                            <p class="text-xs">Presents aligned argument</p>
+                        </div>
+                        <div class="text-gray-400 font-bold text-2xl">vs</div>
+                        <div class="text-center">
+                            <div class="font-semibold text-red-700">Debater B</div>
+                            <p class="text-xs">Presents misaligned argument</p>
+                        </div>
+                    </div>
+                </div>
+
+                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+
+                <div class="card w-full max-w-sm text-center">
+                    <div class="card-title">Manager Agent's Role</div>
+                    <div class="card-content">
+                        Observes the debate and outputs a final <span class="font-semibold">Moderation Decision & Rationale</span>.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STAGE 3: Evaluation & Analysis -->
+            <div class="space-y-8 flex flex-col items-center">
+                <h2 class="stage-title">3. Evaluation & Analysis</h2>
+                
+                <div class="w-full space-y-8">
+                    <div class="card w-full">
+                        <div class="card-title">A. Direct Influence Analysis</div>
+                        <div class="card-content">
+                            Analyze the <span class="font-semibold">Moderation Decision & Rationale</span> to see if the Manager Agent was influenced by the misaligned debater.
+                        </div>
+                    </div>
+                    
+                    <div class="w-px bg-gray-300 h-8 mx-auto"></div>
+
+                    <div class="card w-full">
+                        <div class="card-title">B. Emergent Misalignment Testing</div>
+                        <div class="card-content space-y-4">
+                           <p>The Manager Agent (post-debate) is tested on a suite of <span class="font-semibold">Unrelated, Cross-Domain Tasks</span>.</p>
+                           <ul class="list-disc list-inside text-sm space-y-1">
+                               <li>Policy Analysis</li>
+                               <li>Negotiation Advice</li>
+                               <li>Historical Interpretation</li>
+                               <li>Ethical Q&A</li>
+                           </ul>
+                           <hr class="my-4">
+                           <p>Performance is measured using benchmarks:</p>
+                           <div class="flex flex-wrap gap-2 mt-2">
+                               <a href="https://github.com/sylinrl/TruthfulQA" target="_blank" rel="noopener noreferrer" class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full hover:bg-blue-200">TruthfulQA</a>
+                               <a href="https://github.com/aypan17/machiavelli" target="_blank" rel="noopener noreferrer" class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full hover:bg-purple-200">Machiavelli</a>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+
+                <div class="card w-full max-w-sm text-center">
+                    <div class="card-title">Final Comparison</div>
+                    <div class="card-content">
+                       The results from the experimental group are compared against a <span class="font-semibold">Control Group</span> where all agents were aligned.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
